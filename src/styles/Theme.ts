@@ -4,5 +4,9 @@ export const theme = {
     secondaryBg: "#252527",
     accent: "#7572d5",
     font: "#ffffff"
+  },
+
+  animation: {
+    transDefault: "0.3s ease",
   }
 }
