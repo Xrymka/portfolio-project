@@ -1,4 +1,8 @@
 import { styled } from "styled-components";
+import { Link } from "../../../../components/Link";
+import { theme } from "../../../../styles/Theme";
+import { FlexWrapper } from "../../../../components/FlexWrapper";
+import { Button } from "../../../../components/Button";
 
 type WorkPropsType = {
   title: string
@@ -9,11 +13,16 @@ type WorkPropsType = {
 export const Work = (props: WorkPropsType) => {
   return (
     <StyledWork>
-      <Image src={props.src} alt=""/>
-      <Title>{props.title}</Title>
-      <Text>{props.text}</Text>
-      <Link href={"#"}>demo</Link>
-      <Link href={"#"}>code</Link>
+      <ImageWrapper>
+        <Image src={props.src} alt=""/>
+        <Button>View Project</Button>
+      </ImageWrapper>
+      <Direction>
+        <Title>{props.title}</Title>
+        <Text>{props.text}</Text>
+        <Link href={"#"}>demo</Link>
+        <Link href={"#"}>code</Link>
+      </Direction>
     </StyledWork>
   );
 };
@@ -21,6 +30,56 @@ export const Work = (props: WorkPropsType) => {
 const StyledWork = styled.div`
   width: 100%;
   max-width: 540px;
+  background-color: ${theme.colors.secondaryBg};
+
+  ${Link} {
+    padding-right: 0;
+    padding-left: 0;
+
+    & + ${Link} {
+      margin-left: 20px;
+    }
+  }
+`
+
+const ImageWrapper = styled.div`
+  position: relative;
+  height: 260px;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    transition: background ${theme.animation.transDefault}, backdrop-filter ${theme.animation.transDefault};
+  }
+
+  ${Button} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity ${theme.animation.transDefault};
+
+    &::before {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &:hover {
+    &::before {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+    }
+
+    ${Button} {
+      opacity: 1;
+    }
+  }
 `
 
 const Image = styled.img`
@@ -29,14 +88,14 @@ const Image = styled.img`
   object-fit: cover;
 `
 
+const Direction = styled.div`
+  padding: 25px 20px;
+`
+
 const Title = styled.h3`
 
 `
 
 const Text = styled.p`
-
-`
-
-const Link = styled.a`
-
+  margin: 14px 0 10px;
 `
