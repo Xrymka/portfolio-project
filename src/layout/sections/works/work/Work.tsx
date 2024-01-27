@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 import { Link } from "../../../../components/Link";
 import { theme } from "../../../../styles/Theme";
-import { FlexWrapper } from "../../../../components/FlexWrapper";
 import { Button } from "../../../../components/Button";
 
 type WorkPropsType = {
@@ -28,8 +27,8 @@ export const Work = (props: WorkPropsType) => {
 };
 
 const StyledWork = styled.div`
-  width: 100%;
-  max-width: 540px;
+  flex-grow: 1;
+  width: 330px;
   background-color: ${theme.colors.secondaryBg};
 
   ${Link} {
@@ -39,6 +38,10 @@ const StyledWork = styled.div`
     & + ${Link} {
       margin-left: 20px;
     }
+  }
+
+  @media ${theme.breakpoints.desktop} {
+    max-width: 540px;
   }
 `
 
@@ -71,6 +74,17 @@ const ImageWrapper = styled.div`
   }
 
   &:hover {
+    &::before {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+    }
+
+    ${Button} {
+      opacity: 1;
+    }
+  }
+
+  @media ${theme.breakpoints.tablet} {
     &::before {
       background: rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(4px);

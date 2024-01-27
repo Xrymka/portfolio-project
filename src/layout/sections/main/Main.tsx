@@ -3,12 +3,13 @@ import main from '../../../assets/images/main.jpg'
 import { FlexWrapper } from '../../../components/FlexWrapper';
 import { Container } from '../../../components/Container';
 import { theme } from '../../../styles/Theme';
+import { font } from '../../../styles/Common';
 
 export const Main = () => {
   return (
     <StyledMain>
       <Container>
-        <FlexWrapper align={"center"} justify={"space-between"}>
+        <FlexWrapper align={"center"} justify={"space-around"} wrap={"wrap"} gap={"10px"}>
           <div>
             <SmallText>Hi there</SmallText>
             <Name>I am <span>Svetlana Dyablo</span></Name>
@@ -34,25 +35,30 @@ const StyledMain = styled.section`
 `
 
 const Photo = styled.img`
+  margin-right: 20px;
   width: 350px;
   height: 430px;
   object-fit: cover;
+
+  @media ${theme.breakpoints.mobile} {
+    width: 310px;
+    height: 380px;
+  }
 `
+
 const MainTitle = styled.h1`
-  font-size: 27px;
-  font-weight: 400;
+  ${font({Fmax: 27, Fmin: 20})}
 `
 
 const Name = styled.h2`
   margin: 10px 0;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 50px;
-  font-weight: 700;
-  letter-spacing: .05em;
+  ${font({family: '"Josefin Sans", sans-serif', weight: 700, Fmax: 50, Fmin: 36})}
+  letter-spacing: 0.05em;
 
   span {
     position: relative;
     z-index: 0;
+    white-space: nowrap;
 
     &::after {
       position: absolute;
@@ -65,6 +71,10 @@ const Name = styled.h2`
       background-color: ${theme.colors.accent};
       z-index: -1;
     }
+  }
+
+  @media ${theme.breakpoints.mobile} {
+    margin: 15px 0 22px;
   }
 `
 
@@ -86,5 +96,16 @@ const PhotoWrapper = styled.div`
     height: 470px;
     border: 5px solid ${theme.colors.accent};
     z-index: -1;
+
+    @media ${theme.breakpoints.mobile} {
+      width: 314px;
+      height: 414px;
+      top: -17px;
+      left: 20px;
+    }
+  }
+
+  @media ${theme.breakpoints.mobile} {
+    margin-top: 65px;
   }
 `

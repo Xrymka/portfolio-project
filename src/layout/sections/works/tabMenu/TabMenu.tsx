@@ -20,8 +20,10 @@ const StyledTabMenu = styled.nav`
 
   ul {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 352px;
+    width: 100%;
   }
 `;
 

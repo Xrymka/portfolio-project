@@ -28,6 +28,10 @@ const StyledHeaderMenu = styled.nav`
       display: flex;
       gap: 30px;
     }
+
+    @media ${theme.breakpoints.tablet} {
+      display: none;
+    }
 `;
 
 const Link = styled.a`
