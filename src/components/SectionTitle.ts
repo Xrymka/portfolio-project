@@ -7,7 +7,7 @@ export const SectionTitle = styled.h2`
   text-align: center;
   margin-bottom: 90px;
   ${font({family: '"Josefin Sans", sans-serif', weight: 600, Fmax: 36, Fmin: 30})}
-  letter-spacing: 5px;
+  letter-spacing: 3px;
 
   &::before {
     position: absolute;
