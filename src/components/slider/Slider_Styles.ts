@@ -6,11 +6,12 @@ const Slider = styled.div`
   flex-direction: column;
   align-items: center;
   max-width: 500px;
-  border: 1px solid red;
+  width: 100%;
 `
 
 const Slide = styled.div`
   text-align: center;
+  cursor: grab;
 `
 
 const Text = styled.p`

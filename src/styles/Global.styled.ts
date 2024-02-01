@@ -43,7 +43,7 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  section {
+  section:not(:last-child) {
     padding: 100px 0;
 
     @media ${theme.breakpoints.mobile} {

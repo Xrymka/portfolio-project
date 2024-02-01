@@ -2,26 +2,25 @@ import styled from "styled-components"
 import { Button } from "../../../components/Button"
 import { Link } from "../../../components/Link"
 import { theme } from "../../../styles/Theme"
+import { FlexWrapper } from "../../../components/FlexWrapper"
 
 const Works = styled.section`
+  position: relative;
+
+  ${FlexWrapper} {
+    justify-content: center;
+  }
 `
 
 const Work = styled.div`
-  flex-grow: 1;
-  width: 330px;
   background-color: ${theme.colors.secondaryBg};
 
   ${Link} {
-    padding-right: 0;
-    padding-left: 0;
+    padding: 10px 0;
 
     & + ${Link} {
       margin-left: 20px;
     }
-  }
-
-  @media ${theme.breakpoints.desktop} {
-    max-width: 540px;
   }
 `
 
@@ -43,9 +42,9 @@ const ImageWrapper = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
     opacity: 0;
-    transition: opacity ${theme.animation.transDefault};
+    transition: transform ${theme.animation.transDefault}, opacity ${theme.animation.transDefault};
 
     &::before {
       width: 100%;
@@ -60,6 +59,7 @@ const ImageWrapper = styled.div`
     }
 
     ${Button} {
+      transform: translate(-50%, -50%);
       opacity: 1;
     }
   }

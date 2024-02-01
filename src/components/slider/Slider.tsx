@@ -1,21 +1,38 @@
-import React from "react";
-import { FlexWrapper } from "../FlexWrapper";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+import "./../../styles/slider.css";
 import { S } from "./Slider_Styles";
 
-export const Slider: React.FC = () => {
-  return (
-    <S.Slider>
-      <FlexWrapper>
+type SlidePropsType = {
+    text: string
+    userName: string
+}
+
+const Slide = (props: SlidePropsType) => {
+    return (
         <S.Slide>
-          <S.Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</S.Text>
-          <S.Name>@ivan ivanow</S.Name>
+            <S.Text>{props.text}</S.Text>
+            <S.Name>@{props.userName}</S.Name>
         </S.Slide>
-      </FlexWrapper>
-      <S.Pagination>
-        <span></span>
-        <span className={"active"}></span>
-        <span></span>
-      </S.Pagination>
+    )
+}
+
+const items = [
+    <Slide userName={"ivan ivanow"}
+            text={"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua Ut enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit."} />,
+    <Slide userName={"piotr petrov"}
+            text={"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua Ut enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit."} />,
+    <Slide userName={"igor igorev"}
+            text={"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua Ut enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit."} />,
+];
+
+export const Slider = () => (
+    <S.Slider>
+        <AliceCarousel
+          disableButtonsControls
+          mouseTracking
+          items={items}
+        />
     </S.Slider>
-  );
-};
+
+);
